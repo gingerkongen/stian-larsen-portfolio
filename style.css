@@ -200,17 +200,12 @@ section { padding: 96px 0; }
   justify-content: center;
 }
 
-.hero-image-placeholder {
+.hero-photo {
   width: 320px;
   height: 380px;
-  background: var(--gray-100);
+  object-fit: cover;
   border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gray-400);
-  font-size: 14px;
-  border: 2px dashed var(--gray-200);
+  box-shadow: var(--shadow-lg);
 }
 
 /* =====================
