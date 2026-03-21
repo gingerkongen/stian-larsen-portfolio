@@ -3,1560 +3,313 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Stian Larsen — Sports Scientist & Educator</title>
+  <title>Stian Larsen, PhD — Researcher & Strength Coach</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    /* =========================================================
-       CSS CUSTOM PROPERTIES
-    ========================================================= */
-    :root {
-      --bg:           #0d0d0d;
-      --bg-card:      #141414;
-      --bg-elevated:  #1a1a1a;
-      --border:       rgba(255,255,255,0.07);
-      --accent:       #1a6cf6;
-      --accent-glow:  rgba(26,108,246,0.25);
-      --accent-dim:   rgba(26,108,246,0.12);
-      --text:         #f0f0f0;
-      --text-muted:   #8a8a8a;
-      --text-dim:     #555;
-      --gradient:     linear-gradient(135deg, #1a6cf6 0%, #7b2ff7 100%);
-      --gradient-alt: linear-gradient(135deg, #0f3d8c 0%, #4b1696 100%);
-      --font-head:    'Space Grotesk', sans-serif;
-      --font-body:    'Inter', sans-serif;
-      --radius:       14px;
-      --radius-lg:    22px;
-      --transition:   0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      --max-w:        1100px;
-      --section-gap:  120px;
-    }
-
-    /* =========================================================
-       RESET & BASE
-    ========================================================= */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    /* =========================================================
-       SCROLLBAR
-    ========================================================= */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--text-dim); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-    /* =========================================================
-       NAV
-    ========================================================= */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 40px;
-      background: rgba(13,13,13,0.8);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      transition: padding var(--transition);
-    }
-
-    .nav-logo {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: -0.02em;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color var(--transition);
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-cta {
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 9px 22px;
-      border-radius: 100px;
-      background: var(--accent-dim);
-      border: 1px solid rgba(26,108,246,0.3);
-      color: var(--accent) !important;
-      transition: background var(--transition), border-color var(--transition);
-    }
-
-    .nav-cta:hover {
-      background: var(--accent-glow) !important;
-      border-color: rgba(26,108,246,0.6) !important;
-    }
-
-    /* Hamburger (mobile) */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text-muted);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-
-    /* =========================================================
-       SECTION WRAPPER
-    ========================================================= */
-    section { padding: var(--section-gap) 40px; }
-
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 18px;
-    }
-
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-
-    .section-title {
-      font-family: var(--font-head);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 520px;
-      line-height: 1.7;
-    }
-
-    /* =========================================================
-       HERO
-    ========================================================= */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 0 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Animated grid background */
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(26,108,246,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(26,108,246,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      animation: gridPan 30s linear infinite;
-    }
-
-    @keyframes gridPan {
-      0%   { background-position: 0 0; }
-      100% { background-position: 60px 60px; }
-    }
-
-    /* Glow orbs */
-    #hero::after {
-      content: '';
-      position: absolute;
-      top: 20%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(26,108,246,0.12) 0%, transparent 70%);
-      animation: pulse 8s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50%       { transform: scale(1.1); opacity: 1; }
-    }
-
-    .hero-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 80px;
-      width: 100%;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 24px;
-      animation: fadeUp 0.8s ease both;
-    }
-
-    .hero-eyebrow .dot {
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: blink 2s ease-in-out infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.3; }
-    }
-
-    .hero-name {
-      font-family: var(--font-head);
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.0;
-      margin-bottom: 16px;
-      animation: fadeUp 0.8s 0.1s ease both;
-    }
-
-    .hero-name span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-title {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      font-weight: 400;
-      margin-bottom: 28px;
-      animation: fadeUp 0.8s 0.2s ease both;
-    }
-
-    .hero-tagline {
-      font-family: var(--font-head);
-      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 44px;
-      line-height: 1.4;
-      animation: fadeUp 0.8s 0.3s ease both;
-    }
-
-    .hero-tagline em {
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s 0.4s ease both;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-head);
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 14px 30px;
-      border-radius: 100px;
-      background: var(--gradient);
-      color: #fff;
-      transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
-      box-shadow: 0 4px 30px var(--accent-glow);
-    }
-
-    .btn-primary:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 40px rgba(26,108,246,0.4);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-head);
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 14px 30px;
-      border-radius: 100px;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      transition: border-color var(--transition), color var(--transition), transform var(--transition);
-    }
-
-    .btn-secondary:hover {
-      border-color: rgba(255,255,255,0.25);
-      color: var(--text);
-      transform: translateY(-2px);
-    }
-
-    /* Photo */
-    .hero-photo-wrap {
-      animation: fadeIn 1s 0.5s ease both;
-    }
-
-    .photo-ring {
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      padding: 4px;
-      background: var(--gradient);
-      position: relative;
-      box-shadow: 0 0 60px rgba(26,108,246,0.3), 0 0 120px rgba(123,47,247,0.15);
-      animation: ringPulse 6s ease-in-out infinite;
-    }
-
-    @keyframes ringPulse {
-      0%, 100% { box-shadow: 0 0 60px rgba(26,108,246,0.3), 0 0 120px rgba(123,47,247,0.15); }
-      50%       { box-shadow: 0 0 80px rgba(26,108,246,0.5), 0 0 160px rgba(123,47,247,0.25); }
-    }
-
-    .photo-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: var(--gradient-alt);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* REPLACE: add photo src here */
-    .photo-inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .photo-initials {
-      font-family: var(--font-head);
-      font-size: 4rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.9);
-      letter-spacing: -0.02em;
-      user-select: none;
-    }
-
-    .photo-badge {
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .photo-badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: #22c55e;
-      border-radius: 50%;
-      animation: blink 2s ease-in-out infinite;
-    }
-
-    /* Scroll indicator */
-    .scroll-hint {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-dim);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      animation: fadeIn 1s 1.2s ease both;
-      z-index: 1;
-    }
-
-    .scroll-hint .arrow {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--text-dim), transparent);
-      animation: scrollArrow 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollArrow {
-      0%, 100% { transform: scaleY(1); opacity: 0.5; }
-      50%       { transform: scaleY(0.6); opacity: 1; }
-    }
-
-    /* =========================================================
-       ABOUT
-    ========================================================= */
-    #about {
-      background: var(--bg);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .about-text p strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .about-divider {
-      width: 40px;
-      height: 2px;
-      background: var(--gradient);
-      border-radius: 2px;
-      margin: 28px 0;
-    }
-
-    /* Stats */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      transition: border-color var(--transition), transform var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--gradient);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-
-    .stat-card:hover {
-      border-color: rgba(26,108,246,0.3);
-      transform: translateY(-4px);
-    }
-
-    .stat-card:hover::before { opacity: 1; }
-
-    .stat-number {
-      font-family: var(--font-head);
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 400;
-      line-height: 1.4;
-    }
-
-    /* =========================================================
-       EXPERTISE
-    ========================================================= */
-    #expertise {
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .expertise-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 56px;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .expertise-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .exp-card {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 40px 32px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-      cursor: default;
-    }
-
-    .exp-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 120px;
-      background: linear-gradient(to top, var(--accent-dim), transparent);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-
-    .exp-card:hover {
-      border-color: rgba(26,108,246,0.35);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-
-    .exp-card:hover::after { opacity: 1; }
-
-    .exp-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: var(--accent-dim);
-      border: 1px solid rgba(26,108,246,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 28px;
-      font-size: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .exp-card h3 {
-      font-family: var(--font-head);
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .exp-card p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
-    }
-
-    .exp-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .tag {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      padding: 5px 12px;
-      border-radius: 100px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      border: 1px solid rgba(26,108,246,0.2);
-    }
-
-    /* =========================================================
-       EDUCATION TIMELINE
-    ========================================================= */
-    #education {
-      background: var(--bg);
-    }
-
-    .education-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .timeline {
-      position: relative;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 18px;
-      top: 28px;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), rgba(26,108,246,0.1));
-    }
-
-    .timeline-item {
-      display: flex;
-      gap: 28px;
-      padding-bottom: 40px;
-      position: relative;
-    }
-
-    .timeline-item:last-child { padding-bottom: 0; }
-
-    .timeline-dot {
-      flex-shrink: 0;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--bg-card);
-      border: 2px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      z-index: 1;
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-
-    .timeline-content {
-      flex: 1;
-      padding-top: 6px;
-    }
-
-    .timeline-year {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .timeline-degree {
-      font-family: var(--font-head);
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .timeline-school {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .timeline-note {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      margin-top: 6px;
-      font-style: italic;
-    }
-
-    /* Certifications */
-    .certs-col .section-label { margin-top: 0; }
-
-    .cert-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 12px;
-    }
-
-    .cert-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 22px;
-      transition: border-color var(--transition), transform var(--transition);
-    }
-
-    .cert-item:hover {
-      border-color: rgba(26,108,246,0.3);
-      transform: translateX(6px);
-    }
-
-    .cert-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: var(--accent-dim);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .cert-name {
-      font-weight: 500;
-      font-size: 0.92rem;
-    }
-
-    .cert-issuer {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      margin-top: 2px;
-    }
-
-    /* =========================================================
-       RESEARCH
-    ========================================================= */
-    #research {
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .research-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .pub-display {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 48px 44px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pub-display::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(26,108,246,0.15) 0%, transparent 70%);
-    }
-
-    .pub-count {
-      font-family: var(--font-head);
-      font-size: 7rem;
-      font-weight: 700;
-      letter-spacing: -0.06em;
-      line-height: 1;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: relative;
-      z-index: 1;
-    }
-
-    .pub-label {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-top: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .pub-label strong {
-      color: var(--text);
-      display: block;
-      font-family: var(--font-head);
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .pub-divider {
-      width: 40px;
-      height: 1px;
-      background: var(--border);
-      margin: 28px auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .pub-journals {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      font-style: italic;
-      position: relative;
-      z-index: 1;
-    }
-
-    .research-topics h3 {
-      font-family: var(--font-head);
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-
-    .research-topics p {
-      color: var(--text-muted);
-      font-size: 0.97rem;
-      line-height: 1.8;
-      margin-bottom: 32px;
-    }
-
-    .topic-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .topic-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 18px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-size: 0.92rem;
-      transition: border-color var(--transition);
-    }
-
-    .topic-row:hover { border-color: rgba(26,108,246,0.3); }
-
-    .topic-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--gradient);
-      flex-shrink: 0;
-    }
-
-    /* =========================================================
-       CONNECT
-    ========================================================= */
-    #connect {
-      background: var(--bg);
-    }
-
-    .connect-inner {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .connect-inner .section-label { justify-content: center; }
-    .connect-inner .section-label::before { display: none; }
-
-    .connect-inner p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      margin-top: 16px;
-      margin-bottom: 52px;
-    }
-
-    .connect-cards {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 52px;
-    }
-
-    .connect-card {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 22px 30px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-      min-width: 200px;
-    }
-
-    .connect-card:hover {
-      border-color: rgba(26,108,246,0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 50px rgba(0,0,0,0.4);
-    }
-
-    .connect-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--accent-dim);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .connect-icon svg {
-      width: 22px;
-      height: 22px;
-      fill: var(--accent);
-    }
-
-    .connect-card-text {
-      text-align: left;
-    }
-
-    .connect-card-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-      margin-bottom: 3px;
-    }
-
-    .connect-card-name {
-      font-family: var(--font-head);
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-    footer {
-      padding: 32px 40px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-name {
-      font-family: var(--font-head);
-      font-size: 0.9rem;
-      font-weight: 600;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      transition: color var(--transition);
-    }
-
-    .footer-links a:hover { color: var(--accent); }
-
-    /* =========================================================
-       ANIMATIONS
-    ========================================================= */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    /* Reveal on scroll (CSS only via intersection trick) */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-    @media (max-width: 900px) {
-      :root { --section-gap: 80px; }
-
-      nav { padding: 18px 24px; }
-      section { padding: var(--section-gap) 24px; }
-      footer { padding: 28px 24px; }
-
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 50px;
-      }
-
-      .hero-eyebrow { justify-content: center; }
-      .hero-actions { justify-content: center; }
-      .hero-photo-wrap { order: -1; display: flex; justify-content: center; }
-      .photo-ring { width: 200px; height: 200px; }
-      .photo-initials { font-size: 2.8rem; }
-
-      .about-grid,
-      .research-inner,
-      .education-grid { grid-template-columns: 1fr; gap: 48px; }
-
-      .expertise-cards { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .connect-cards { flex-direction: column; align-items: center; }
-
-      .pub-count { font-size: 5rem; }
-    }
-
-    @media (max-width: 600px) {
-      .stats-grid { grid-template-columns: 1fr; }
-      .expertise-cards { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- ============================================================
-     NAV
-============================================================ -->
-<nav>
-  <div class="nav-logo">Dr. Stian Larsen</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#expertise">Expertise</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#research">Research</a></li>
-    <li><a href="#connect" class="nav-cta">Connect</a></li>
-  </ul>
-  <div class="hamburger" aria-label="Menu" role="button" tabindex="0">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Stian Larsen</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#coaching">Coaching</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
 
-
-<!-- ============================================================
-     HERO
-============================================================ -->
-<section id="hero">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <div class="hero-eyebrow">
-        <span class="dot"></span>
-        Sports Scientist · Researcher · Educator
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <span class="hero-tag">PhD · Researcher · Strength Coach</span>
+      <h1>Stian Larsen</h1>
+      <p class="hero-subtitle">Assisting Head of Education at <strong>AFPT</strong> · Specializing in biomechanics, muscle hypertrophy, and evidence-based strength training</p>
+      <div class="hero-cta">
+        <a href="#research" class="btn btn-primary">View Research</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
       </div>
-      <h1 class="hero-name">Dr. Stian<br /><span>Larsen</span></h1>
-      <p class="hero-title">
-        Assistant Academic Director &amp; Lecturer · AFPT, Norway
-      </p>
-      <p class="hero-tagline">
-        Where science meets<br /><em>the squat rack.</em>
-      </p>
-      <div class="hero-actions">
-        <a href="#research" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          View Research
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">41+</span>
+          <span class="stat-label">Publications</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">406+</span>
+          <span class="stat-label">Citations</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">59K+</span>
+          <span class="stat-label">Paper Reads</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">8K+</span>
+          <span class="stat-label">Followers</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-placeholder">
+        <span>Photo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>About</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="lead">Stian Larsen is a researcher and practitioner dedicated to understanding how strength training works — from the biomechanics of a barbell back squat to the mechanisms of muscle hypertrophy.</p>
+          <p>He holds a PhD in professional science from <strong>Nord University</strong>, where he specialized in musculoskeletal modeling and biomechanics during the barbell back squat. With over 41 peer-reviewed publications and 400+ citations, his work bridges the gap between laboratory science and real-world training.</p>
+          <p>As Assisting Head of Education at <strong>AFPT</strong> (Akademiet for Personlig Trening), Stian plays a key role in shaping Norway's evidence-based curriculum for personal trainers. He joined AFPT as a PT student in 2019 and has been a lecturer since 2021.</p>
+          <p>Beyond academia, Stian is an active strength coach with hands-on experience working with athletes focused on muscle hypertrophy and maximal strength development.</p>
+        </div>
+        <div class="about-credentials">
+          <h3>Education</h3>
+          <ul class="credential-list">
+            <li>
+              <span class="cred-degree">PhD, Professional Science</span>
+              <span class="cred-school">Nord University · Biomechanics of the Barbell Back Squat</span>
+            </li>
+            <li>
+              <span class="cred-degree">MSc, Sports Science</span>
+              <span class="cred-school">Nord University</span>
+            </li>
+            <li>
+              <span class="cred-degree">BSc, Sports Science</span>
+              <span class="cred-school">Nord University</span>
+            </li>
+          </ul>
+          <h3>Certifications</h3>
+          <ul class="credential-list">
+            <li><span class="cred-degree">Personal Trainer · AFPT</span></li>
+            <li><span class="cred-degree">Rehabilitation Trainer · AFPT</span></li>
+            <li><span class="cred-degree">Nutrition Advisor · AFPT</span></li>
+            <li><span class="cred-degree">Biomechanics & Exercise Analysis · AFPT</span></li>
+            <li><span class="cred-degree">Olympic Weightlifting Coach · AFPT</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Research</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-intro">Stian's research sits at the intersection of biomechanics and applied strength training — with a particular focus on how exercise selection, technique, and programming influence muscle hypertrophy and strength performance.</p>
+      <div class="research-areas">
+        <div class="research-card">
+          <div class="research-icon">🏋️</div>
+          <h3>Squat Biomechanics</h3>
+          <p>Investigating how barbell placement, stance width, and load affect kinematics, kinetics, and muscle activation in the back squat — including the sticking region.</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">💪</div>
+          <h3>Muscle Hypertrophy</h3>
+          <p>Exploring how exercise selection, range of motion, and training variables influence skeletal muscle growth — from the quadriceps to the deltoids and calves.</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">📊</div>
+          <h3>Training Methodology</h3>
+          <p>Systematic reviews and meta-analyses on autoregulation, free weights vs. machines, drop sets, and training beyond momentary failure.</p>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">🔬</div>
+          <h3>Exercise Science</h3>
+          <p>Broad contributions to exercise science including EMG methodology, anthropometric predictors of strength, and fitness centre participation motives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="container">
+      <div class="section-header">
+        <h2>Selected Publications</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-intro">A selection of peer-reviewed papers. <a href="https://scholar.google.com/citations?user=IKNmP08AAAAJ" target="_blank" rel="noopener">View full list on Google Scholar →</a></p>
+      <div class="pub-list">
+
+        <div class="pub-item">
+          <span class="pub-year">2025</span>
+          <div class="pub-details">
+            <h4>The effects of hip flexion angle on quadriceps femoris muscle hypertrophy in the leg extension exercise</h4>
+            <p class="pub-journal">Journal of Sports Sciences · 21 citations</p>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">2025</span>
+          <div class="pub-details">
+            <h4>Dumbbell versus cable lateral raises for lateral deltoid hypertrophy: an experimental study</h4>
+            <p class="pub-journal">Frontiers in Physiology · 12 citations</p>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">2025</span>
+          <div class="pub-details">
+            <h4>Resistance training beyond momentary failure: the effects of past-failure partials on muscle hypertrophy in the gastrocnemius</h4>
+            <p class="pub-journal">Frontiers in Psychology · 10 citations</p>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">2025</span>
+          <div class="pub-details">
+            <h4>Effects of barbell load on kinematics, kinetics, and myoelectric activity in back squats</h4>
+            <p class="pub-journal">Sports Biomechanics · 20 citations</p>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">2023</span>
+          <div class="pub-details">
+            <h4>Effect of free-weight vs. machine-based strength training on maximal strength, hypertrophy and jump performance — a systematic review and meta-analysis</h4>
+            <p class="pub-journal">BMC Sports Science, Medicine and Rehabilitation · 50 citations</p>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">2023</span>
+          <div class="pub-details">
+            <h4>Effects of drop sets on skeletal muscle hypertrophy: a systematic review and meta-analysis</h4>
+            <p class="pub-journal">Sports Medicine-Open · 18 citations</p>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">2021</span>
+          <div class="pub-details">
+            <h4>Effects of subjective and objective autoregulation methods for intensity and volume on enhancing maximal strength during resistance-training interventions: A systematic review</h4>
+            <p class="pub-journal">PeerJ · 74 citations</p>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-year">2021</span>
+          <div class="pub-details">
+            <h4>A biomechanical analysis of wide, medium, and narrow grip width effects on kinematics, horizontal kinetics, and muscle activity on the sticking region</h4>
+            <p class="pub-journal">Frontiers in Sports and Active Living · 44 citations</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="pub-cta">
+        <a href="https://scholar.google.com/citations?user=IKNmP08AAAAJ" target="_blank" rel="noopener" class="btn btn-outline">View All 41 Publications on Google Scholar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACHING -->
+  <section id="coaching" class="bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Coaching & Education</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="coaching-grid">
+        <div class="coaching-card">
+          <h3>AFPT — Akademiet for Personlig Trening</h3>
+          <p>Stian serves as Assisting Head of Education at Norway's leading personal training academy. He lectures on the foundational programme, oversees student thesis work, and has been instrumental in building AFPT's evidence-based curriculum since 2021.</p>
+          <a href="https://afpt.no" target="_blank" rel="noopener" class="link-arrow">Visit AFPT →</a>
+        </div>
+        <div class="coaching-card">
+          <h3>Strength Coaching</h3>
+          <p>With expertise grounded in years of published biomechanics research, Stian coaches athletes with goals in muscle hypertrophy and maximal strength development. His approach is scientific, practical, and results-driven.</p>
+        </div>
+        <div class="coaching-card">
+          <h3>Nord University</h3>
+          <p>As an affiliate of the Sports Science Programme at Nord University (Levanger), Stian continues to bridge academic research and applied practice — contributing to a growing body of knowledge in resistance training science.</p>
+          <a href="https://www.nord.no" target="_blank" rel="noopener" class="link-arrow">Nord University →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKING -->
+  <section id="speaking">
+    <div class="container">
+      <div class="section-header">
+        <h2>Speaking</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-intro">Stian is available for conferences, seminars, and workshops on evidence-based strength training, biomechanics, and muscle hypertrophy.</p>
+      <div class="speaking-event">
+        <div class="event-year">2026</div>
+        <div class="event-details">
+          <h3>International Strength and Conditioning Summit (ISCS)</h3>
+          <p>Oslo, Norway · AFPT</p>
+          <p>Speaker at one of Scandinavia's premier strength and conditioning conferences, presenting cutting-edge research on hypertrophy and biomechanics.</p>
+          <a href="https://iscs.afpt.no" target="_blank" rel="noopener" class="link-arrow">ISCS 2026 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-dark">
+    <div class="container">
+      <div class="section-header light">
+        <h2>Get in Touch</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-intro light">For research collaborations, coaching inquiries, speaking invitations, or media requests.</p>
+      <div class="contact-links">
+        <a href="https://www.instagram.com/drstianlarsen/" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-icon">📸</span>
+          <span class="contact-label">Instagram</span>
+          <span class="contact-handle">@drstianlarsen</span>
         </a>
-        <a href="#connect" class="btn-secondary">
-          Get in Touch
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <a href="https://scholar.google.com/citations?user=IKNmP08AAAAJ" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-icon">🎓</span>
+          <span class="contact-label">Google Scholar</span>
+          <span class="contact-handle">Stian Larsen</span>
         </a>
-      </div>
-    </div>
-
-    <!-- Photo -->
-    <div class="hero-photo-wrap">
-      <div class="photo-ring">
-        <div class="photo-inner">
-          <!-- REPLACE: add photo src here -->
-          <!-- <img src="photo.jpg" alt="Dr. Stian Larsen" /> -->
-          <span class="photo-initials">SL</span>
-        </div>
-      </div>
-      <div class="photo-badge">Available for lectures</div>
-    </div>
-  </div>
-
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="arrow"></div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     ABOUT
-============================================================ -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <div class="section-label">About</div>
-        <h2 class="section-title">Bridging the gap between the lab and the lifting platform.</h2>
-        <div class="about-divider"></div>
-        <p>
-          Dr. Stian Larsen is a Norwegian sports scientist whose work sits at the intersection of
-          <strong>rigorous academic research</strong> and practical strength training. Holding a PhD in
-          Professional Science from Nord University — with a specialization in squat biomechanics — he
-          brings a depth of understanding to movement mechanics that is rare in both the academic and
-          coaching worlds.
-        </p>
-        <p>
-          As <strong>Assistant Academic Director and Lecturer at AFPT</strong> (Akademiet For Personlig
-          Trening), Stian shapes the next generation of evidence-based personal trainers in Norway.
-          His teaching philosophy is straightforward: great coaching must be grounded in science,
-          and great science must speak to the real world.
-        </p>
-        <p>
-          With over 30 peer-reviewed publications to his name and certified expertise spanning personal
-          training, rehabilitation, and nutrition, Stian is one of Scandinavia's leading voices in
-          applied strength and conditioning science.
-        </p>
-      </div>
-
-      <!-- Stats -->
-      <div class="stats-grid reveal" style="transition-delay: 0.15s;">
-        <div class="stat-card">
-          <div class="stat-number">30+</div>
-          <div class="stat-label">Peer-reviewed publications in international journals</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">PhD</div>
-          <div class="stat-label">Professional Science, Nord University</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">3+</div>
-          <div class="stat-label">Academic degrees in Sports Science</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">Years lecturing at AFPT since 2021</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     EXPERTISE
-============================================================ -->
-<section id="expertise">
-  <div class="container">
-    <div class="expertise-header reveal">
-      <div>
-        <div class="section-label">Expertise</div>
-        <h2 class="section-title">Core areas of mastery</h2>
-      </div>
-      <p class="section-sub">Three pillars that define Stian's scientific and educational work.</p>
-    </div>
-
-    <div class="expertise-cards">
-      <div class="exp-card reveal" style="transition-delay: 0.1s;">
-        <div class="exp-icon">🦴</div>
-        <h3>Biomechanics</h3>
-        <p>
-          Specializing in squat biomechanics, Stian investigates how joint mechanics, bar path, stance
-          width, and individual anatomy interact to produce efficient and safe movement under load.
-          His PhD research pushed the frontier of what we know about human movement in strength sports.
-        </p>
-        <div class="exp-tags">
-          <span class="tag">Squat Mechanics</span>
-          <span class="tag">Joint Kinematics</span>
-          <span class="tag">Force Analysis</span>
-          <span class="tag">Movement Science</span>
-        </div>
-      </div>
-
-      <div class="exp-card reveal" style="transition-delay: 0.2s;">
-        <div class="exp-icon">💪</div>
-        <h3>Muscle Hypertrophy</h3>
-        <p>
-          A deep researcher in the mechanisms of skeletal muscle growth, Stian explores how training
-          variables — volume, load, tempo, and frequency — interact with physiological processes to
-          maximize muscle adaptation. His work bridges bench research and gym-floor application.
-        </p>
-        <div class="exp-tags">
-          <span class="tag">Muscle Growth</span>
-          <span class="tag">Training Variables</span>
-          <span class="tag">Muscle Physiology</span>
-          <span class="tag">Resistance Training</span>
-        </div>
-      </div>
-
-      <div class="exp-card reveal" style="transition-delay: 0.3s;">
-        <div class="exp-icon">📊</div>
-        <h3>Evidence-Based Training</h3>
-        <p>
-          Stian champions the translation of research into practice — critically evaluating the
-          literature to develop programming frameworks that actually work. His educational role
-          at AFPT ensures this evidence-based approach reaches practitioners across Norway.
-        </p>
-        <div class="exp-tags">
-          <span class="tag">Strength Programming</span>
-          <span class="tag">Research Translation</span>
-          <span class="tag">Coaching Science</span>
-          <span class="tag">Pedagogy</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     EDUCATION
-============================================================ -->
-<section id="education">
-  <div class="container">
-    <div class="education-grid">
-      <!-- Timeline -->
-      <div class="reveal">
-        <div class="section-label">Education</div>
-        <h2 class="section-title">Academic journey</h2>
-        <p class="section-sub" style="margin-bottom: 52px;">Built on a foundation of rigorous scientific training at Nord University.</p>
-
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot">🎓</div>
-            <div class="timeline-content">
-              <div class="timeline-year">PhD</div>
-              <div class="timeline-degree">Doctor of Philosophy in Professional Science</div>
-              <div class="timeline-school">Nord University, Norway</div>
-              <div class="timeline-note">Specialization: Squat Biomechanics</div>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot">📚</div>
-            <div class="timeline-content">
-              <div class="timeline-year">MSc</div>
-              <div class="timeline-degree">Master of Science in Sports Science</div>
-              <div class="timeline-school">Nord University, Norway</div>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot">🏅</div>
-            <div class="timeline-content">
-              <div class="timeline-year">BSc</div>
-              <div class="timeline-degree">Bachelor of Science in Sports Science</div>
-              <div class="timeline-school">Nord University, Norway</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Certifications -->
-      <div class="certs-col reveal" style="transition-delay: 0.15s;">
-        <div class="section-label" style="margin-top: 76px;">Certifications</div>
-        <h3 style="font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 30px;">
-          Applied credentials
-        </h3>
-
-        <div class="cert-list">
-          <div class="cert-item">
-            <div class="cert-icon">🏋️</div>
-            <div>
-              <div class="cert-name">Certified Personal Trainer</div>
-              <div class="cert-issuer">AFPT — Akademiet For Personlig Trening</div>
-            </div>
-          </div>
-
-          <div class="cert-item">
-            <div class="cert-icon">🩹</div>
-            <div>
-              <div class="cert-name">Rehabilitation Trainer</div>
-              <div class="cert-issuer">AFPT — Akademiet For Personlig Trening</div>
-            </div>
-          </div>
-
-          <div class="cert-item">
-            <div class="cert-icon">🥗</div>
-            <div>
-              <div class="cert-name">Nutrition Advisor</div>
-              <div class="cert-issuer">AFPT — Akademiet For Personlig Trening</div>
-            </div>
-          </div>
-
-          <div class="cert-item">
-            <div class="cert-icon">🎙️</div>
-            <div>
-              <div class="cert-name">Lecturer &amp; Assistant Academic Director</div>
-              <div class="cert-issuer">AFPT — since 2021</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     RESEARCH
-============================================================ -->
-<section id="research">
-  <div class="container">
-    <div class="research-inner">
-      <div class="pub-display reveal">
-        <div class="pub-count">30+</div>
-        <div class="pub-label">
-          <strong>Peer-Reviewed Publications</strong>
-          Published in leading international journals across<br />
-          sports science, biomechanics, and exercise physiology.
-        </div>
-        <div class="pub-divider"></div>
-        <div class="pub-journals">
-          International journals · Peer-reviewed · Evidence-based
-        </div>
-      </div>
-
-      <div class="research-topics reveal" style="transition-delay: 0.15s;">
-        <div class="section-label">Research</div>
-        <h2 class="section-title">Pushing the boundaries of strength science</h2>
-        <p>
-          Stian's research portfolio covers the foundational and applied science of strength training.
-          From the mechanics of the barbell squat to the molecular basis of muscle adaptation, his
-          work provides the evidence base that coaches and practitioners need to train smarter.
-        </p>
-
-        <div class="topic-list">
-          <div class="topic-row">
-            <div class="topic-dot"></div>
-            Squat biomechanics and lower-extremity kinetics
-          </div>
-          <div class="topic-row">
-            <div class="topic-dot"></div>
-            Mechanisms of skeletal muscle hypertrophy
-          </div>
-          <div class="topic-row">
-            <div class="topic-dot"></div>
-            Resistance training dose-response relationships
-          </div>
-          <div class="topic-row">
-            <div class="topic-dot"></div>
-            Strength training and injury rehabilitation
-          </div>
-          <div class="topic-row">
-            <div class="topic-dot"></div>
-            Evidence-based practice in personal training education
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     CONNECT
-============================================================ -->
-<section id="connect">
-  <div class="container">
-    <div class="connect-inner reveal">
-      <div class="section-label">Connect</div>
-      <h2 class="section-title">Let's talk science.</h2>
-      <p>
-        Whether you're a fellow researcher, an educator, a coach, or simply curious about
-        the science of strength — Stian is reachable across the following channels.
-      </p>
-
-      <div class="connect-cards">
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/drstianlarsen" target="_blank" rel="noopener noreferrer" class="connect-card">
-          <div class="connect-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
-          </div>
-          <div class="connect-card-text">
-            <div class="connect-card-label">Instagram</div>
-            <div class="connect-card-name">@drstianlarsen</div>
-          </div>
+        <a href="https://www.researchgate.net/profile/Stian-Larsen" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-icon">🔬</span>
+          <span class="contact-label">ResearchGate</span>
+          <span class="contact-handle">Stian Larsen</span>
         </a>
-
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/stian-larsen-6231a018a" target="_blank" rel="noopener noreferrer" class="connect-card">
-          <div class="connect-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </div>
-          <div class="connect-card-text">
-            <div class="connect-card-label">LinkedIn</div>
-            <div class="connect-card-name">Stian Larsen</div>
-          </div>
+        <a href="https://www.linkedin.com/in/stian-larsen-6231a018a/" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-icon">💼</span>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-handle">Stian Larsen</span>
         </a>
-
-        <!-- AFPT -->
-        <a href="https://afpt.no/om-oss/vare-forelesere/stian-larsen" target="_blank" rel="noopener noreferrer" class="connect-card">
-          <div class="connect-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/>
-            </svg>
-          </div>
-          <div class="connect-card-text">
-            <div class="connect-card-label">AFPT Profile</div>
-            <div class="connect-card-name">afpt.no</div>
-          </div>
+        <a href="https://afpt.no/om-oss/vare-forelesere/stian-larsen" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-icon">🏋️</span>
+          <span class="contact-label">AFPT Profile</span>
+          <span class="contact-handle">afpt.no</span>
         </a>
       </div>
-
-      <a href="https://afpt.no/om-oss/vare-forelesere/stian-larsen" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: inline-flex;">
-        View Full AFPT Profile
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
     </div>
-  </div>
-</section>
+  </section>
 
+  <footer>
+    <div class="container">
+      <p>© 2026 Stian Larsen, PhD · All rights reserved</p>
+    </div>
+  </footer>
 
-<!-- ============================================================
-     FOOTER
-============================================================ -->
-<footer>
-  <div class="footer-name">Dr. Stian Larsen</div>
-  <div class="footer-copy">© 2025 · Sports Scientist & Educator · AFPT, Norway</div>
-  <div class="footer-links">
-    <a href="https://www.instagram.com/drstianlarsen" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.linkedin.com/in/stian-larsen-6231a018a" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://afpt.no/om-oss/vare-forelesere/stian-larsen" target="_blank" rel="noopener">AFPT</a>
-  </div>
-</footer>
-
-
-<!-- ============================================================
-     SCROLL-REVEAL (pure JS, no frameworks — minimal & self-contained)
-============================================================ -->
-<script>
-  // Scroll reveal — IntersectionObserver, no deps
-  (function () {
-    const els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) {
-      els.forEach(function(el) { el.classList.add('visible'); });
-      return;
-    }
-    const obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    els.forEach(function(el) { obs.observe(el); });
-  })();
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
