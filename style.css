@@ -660,8 +660,23 @@ footer {
 
 @media (max-width: 640px) {
   section { padding: 72px 0; }
-  #navbar { top: 12px; width: calc(100% - 24px); }
+  #navbar { top: 12px; width: calc(100% - 24px); border-radius: 16px; }
   .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(16px);
+    padding: 16px 24px;
+    border-radius: 0 0 16px 16px;
+    gap: 4px;
+  }
+  .nav-links.open a { color: rgba(255,255,255,0.6); padding: 10px 0; }
+  .nav-links.open a:hover { color: var(--white); }
   .nav-toggle { display: block; }
   .hero-stats { flex-wrap: wrap; gap: 24px; }
   .stat { border-right: none; padding-right: 0; margin-right: 0; }

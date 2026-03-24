@@ -260,15 +260,7 @@ const toggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 if (toggle && navLinks) {
   toggle.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-    navLinks.style.flexDirection = 'column';
-    navLinks.style.position = 'absolute';
-    navLinks.style.top = '64px';
-    navLinks.style.left = '0';
-    navLinks.style.right = '0';
-    navLinks.style.background = 'white';
-    navLinks.style.padding = '16px 24px';
-    navLinks.style.borderBottom = '1px solid #e0e0e0';
+    navLinks.classList.toggle('open');
   });
 }
 
